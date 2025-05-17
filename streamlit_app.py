@@ -11,7 +11,7 @@ except FileNotFoundError:
     st.error("Model or scaler file not found. Please ensure 'random_forest_model.pkl' and 'scaler.pkl' are in the repository.")
     st.stop()
 
-# Expected feature names (based on training data)
+# Expected feature names
 expected_features = ['Pregnancies', 'Glucose', 'BloodPressure', 'Insulin', 'BMI', 
                     'DiabetesPedigreeFunction', 'Age', 'Glucose_BMI_Ratio']
 
@@ -49,4 +49,4 @@ if st.button('Predict'):
             prediction = model.predict(input_scaled)
             st.write('Prediction:', 'Diabetic' if prediction[0] == 1 else 'Non-Diabetic')
         except ValueError as e:
-            st.error(f"Error in prediction: {str(e)}. Ensure input data matches expected features: {expected_features}")
+            st.error(f"Error in prediction: {str(e)}. Expected features: {expected_features}")
